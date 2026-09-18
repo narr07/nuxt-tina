@@ -9,7 +9,7 @@ TinaCMS integration module for Nuxt, with contextual visual editing and preview 
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 <!-- - [🏀 Online playground](https://stackblitz.com/github/narr07/nuxt-tina?file=playground%2Fapp.vue) -->
-<!-- - [📖 &nbsp;Documentation](https://example.com) -->
+- [📖 &nbsp;Documentation](https://nuxt-tinacms.vercel.app/)
 
 ## Features
 

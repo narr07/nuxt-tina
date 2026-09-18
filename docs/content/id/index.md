@@ -8,8 +8,8 @@ seo:
 ::u-page-hero
 ---
 orientation: horizontal
-headline: v0.1.0 — Eksperimental
-description: Contextual/visual editing, admin studio, dan Tina Cloud — dibungkus jadi satu module Nuxt.
+headline: 'v0.1.0: Eksperimental'
+description: Contextual/visual editing, admin studio, dan Tina Cloud, dibungkus jadi satu module Nuxt.
 links:
   - label: Mulai
     to: /getting-started/introduction
@@ -68,7 +68,7 @@ export default defineContentConfig({
 ::u-page-section
 ---
 title: Kenapa nuxt-tina?
-description: TinaCMS belum punya integrasi resmi buat Vue/Nuxt — module ini menutup gap itu lewat bridge yang sudah dites end-to-end.
+description: TinaCMS belum punya integrasi resmi buat Vue/Nuxt. Module ini menutup gap itu lewat bridge yang sudah dites end-to-end.
 ---
 
 :::u-page-grid
@@ -76,10 +76,10 @@ description: TinaCMS belum punya integrasi resmi buat Vue/Nuxt — module ini me
 ---
 icon: i-lucide-eye
 title: Contextual Editing
-description: Bridge postMessage dua arah antara Tina Admin dan halaman Nuxt kamu — live patch, tanpa reload.
+description: Bridge postMessage dua arah antara Tina Admin dan halaman Nuxt kamu, live patch, tanpa reload. Alasan utama module ini dibuat.
 spotlight: true
 spotlightColor: primary
-variant: outline
+variant: solid
 ---
 ::::
 
