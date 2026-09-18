@@ -80,7 +80,7 @@ export default defineAppConfig({
     },
     pageHero: {
       slots: {
-        container: 'pt-4 sm:pt-8 lg:pt-8 pb-24 sm:pb-32 lg:pb-40'
+        container: 'pt-4 sm:pt-8 lg:pt-8 pb-24 sm:pb-32 lg:pb-40',
       },
     },
   },
