@@ -1,6 +1,6 @@
 {
   "name": "nuxt-tina",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TinaCMS integration module for Nuxt with contextual editing and preview mode",
   "repository": "narr07/nuxt-tina",
   "license": "MIT",
@@ -53,9 +53,15 @@
     "next-tinacms-cloudinary": "^27.0.4"
   },
   "peerDependenciesMeta": {
-    "@tinacms/auth": { "optional": true },
-    "mermaid": { "optional": true },
-    "next-tinacms-cloudinary": { "optional": true }
+    "@tinacms/auth": {
+      "optional": true
+    },
+    "mermaid": {
+      "optional": true
+    },
+    "next-tinacms-cloudinary": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@nuxt/devtools": "^3.4.2",
