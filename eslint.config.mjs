@@ -12,6 +12,7 @@ export default createConfigForNuxt({
   dirs: {
     src: [
       './playground',
+      './docs',
     ],
   },
 })
@@ -30,6 +31,13 @@ export default createConfigForNuxt({
       files: ['src/runtime/components/TinaMermaid.vue'],
       rules: {
         'vue/no-v-html': 'off',
+      },
+    },
+    {
+      // Nuxt page/layout filenames are routes, not reusable components.
+      files: ['docs/app/pages/**/*.vue', 'docs/app/layouts/**/*.vue'],
+      rules: {
+        'vue/multi-word-component-names': 'off',
       },
     },
   )
