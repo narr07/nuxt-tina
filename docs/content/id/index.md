@@ -1,6 +1,8 @@
 ---
 title: TinaCMS untuk Nuxt
 description: Module Nuxt yang mengintegrasikan TinaCMS dengan contextual/visual editing lewat iframe postMessage bridge.
+seo:
+  ogImage: '/template.png'
 ---
 
 ::u-page-hero

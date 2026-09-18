@@ -24,6 +24,9 @@ dist
 .build-*
 .netlify
 
+# Vercel (local CLI project link + Build Output API v3 artifacts)
+.vercel
+
 # Env
 .env
 
