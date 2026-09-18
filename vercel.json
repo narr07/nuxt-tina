@@ -1,0 +1,5 @@
+{
+  "framework": null,
+  "installCommand": "pnpm install",
+  "buildCommand": "cd docs && npx nuxi prepare && npx nuxi build"
+}
