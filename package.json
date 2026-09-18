@@ -1,6 +1,6 @@
 {
   "name": "nuxt-tina",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "TinaCMS integration module for Nuxt with contextual editing and preview mode",
   "homepage": "https://nuxt-tinacms.vercel.app/",
   "repository": "narr07/nuxt-tina",
