@@ -1,0 +1,79 @@
+{
+  "name": "nuxt-tina",
+  "version": "0.1.0",
+  "description": "TinaCMS integration module for Nuxt with contextual editing and preview mode",
+  "repository": "narr07/nuxt-tina",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    },
+    "./utils": {
+      "types": "./dist/runtime/utils/tina-schema-bridge.d.ts",
+      "import": "./dist/runtime/utils/tina-schema-bridge.js"
+    },
+    "./media": {
+      "types": "./dist/runtime/utils/cloudinary-media.d.ts",
+      "import": "./dist/runtime/utils/cloudinary-media.js"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "workspaces": [
+    "playground"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "npm run dev:prepare && nuxt dev playground",
+    "dev:build": "nuxt build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^4.5.2"
+  },
+  "peerDependencies": {
+    "@tinacms/auth": "^1.1.5",
+    "mermaid": "^12.0.0",
+    "next-tinacms-cloudinary": "^27.0.4"
+  },
+  "peerDependenciesMeta": {
+    "@tinacms/auth": { "optional": true },
+    "mermaid": { "optional": true },
+    "next-tinacms-cloudinary": { "optional": true }
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^3.4.2",
+    "@nuxt/eslint-config": "^1.17.0",
+    "@nuxt/module-builder": "^1.0.3",
+    "@nuxt/schema": "^4.5.2",
+    "@nuxt/test-utils": "^4.3.2",
+    "@tinacms/auth": "^1.1.5",
+    "@tinacms/cli": "^3.0.0",
+    "@types/node": "latest",
+    "changelogen": "^0.6.2",
+    "eslint": "^10.10.0",
+    "mermaid": "^12.0.0",
+    "next-tinacms-cloudinary": "^27.0.4",
+    "nuxt": "^4.5.2",
+    "tinacms": "^3.14.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11",
+    "vue-tsc": "^3.3.11"
+  }
+}
