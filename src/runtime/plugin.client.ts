@@ -1,5 +1,5 @@
 import type { Plugin } from '#app'
-import { defineNuxtPlugin, useRouter } from '#imports'
+import { defineNuxtPlugin, useRouter, useRuntimeConfig } from '#imports'
 import { tinaBridge } from './utils/bridge'
 
 // Explicit Plugin return type: defineNuxtPlugin's inferred type isn't
@@ -10,6 +10,7 @@ const tinaBridgePlugin: Plugin = defineNuxtPlugin((_nuxtApp) => {
     return
   }
 
+  tinaBridge.debug = Boolean(useRuntimeConfig().public.tina?.debug)
   tinaBridge.init()
 
   // Synchronize Nuxt page route navigation with parent Tina Admin window URL hash

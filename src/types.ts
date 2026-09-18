@@ -52,6 +52,13 @@ export interface ModuleOptions {
    * @default true
    */
   enabled?: boolean
+
+  /**
+   * Log bridge activity to the browser console — connections, received
+   * messages, and messages dropped for failing the origin check.
+   * @default false
+   */
+  debug?: boolean
 }
 
 export interface TinaDataEnvelope<T = Record<string, unknown>> {

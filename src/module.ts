@@ -97,6 +97,7 @@ export default defineNuxtModule<ModuleOptions>({
     tinaPath: 'tina',
     visualEditing: true,
     enabled: true,
+    debug: false,
     media: {
       publicFolder: 'public',
       mediaRoot: 'uploads',
@@ -108,6 +109,22 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     const { resolve } = createResolver(import.meta.url)
+
+    // Dev-only sanity checks for the most common misconfigurations — never
+    // run in production so they can't spam production logs.
+    if (nuxt.options.dev) {
+      if (options.tinaPath && (options.tinaPath.startsWith('/') || options.tinaPath.includes('..'))) {
+        console.warn(`[nuxt-tina] "tinaPath" should be a relative path under the project root, got "${options.tinaPath}"`)
+      }
+
+      if (options.media?.provider === 'cloudinary') {
+        const requiredEnvVars = ['NUXT_TINA_CLOUDINARY_CLOUD_NAME', 'NUXT_TINA_CLOUDINARY_API_KEY', 'NUXT_TINA_CLOUDINARY_API_SECRET']
+        const missing = requiredEnvVars.filter(name => !process.env[name])
+        if (missing.length > 0) {
+          console.warn(`[nuxt-tina] media.provider is "cloudinary" but missing env var(s): ${missing.join(', ')} — see the Media guide.`)
+        }
+      }
+    }
 
     // Auto-scaffold tina/config.ts on first run, never overwrite an existing one
     // (also checks parent dirs up to the repo root, so monorepo/workspace layouts
@@ -124,6 +141,7 @@ export default defineNuxtModule<ModuleOptions>({
       clientId: options.clientId || '',
       branch: options.branch || 'main',
       visualEditing: Boolean(options.visualEditing),
+      debug: Boolean(options.debug),
       media: {
         publicFolder: options.media?.publicFolder || 'public',
         mediaRoot: options.media?.mediaRoot || 'uploads',

@@ -26,6 +26,8 @@ export interface UseTinaReturn<T> {
   isEditing: Ref<boolean>
   isInIframe: Ref<boolean>
   quickEditEnabled: Ref<boolean>
+  /** The last error caught while talking to Tina Admin, or `null`. */
+  bridgeError: Ref<Error | null>
   refresh: () => Promise<void>
 }
 
@@ -199,6 +201,7 @@ export function useTina<T extends Record<string, unknown>>(
   const isEditing = ref<boolean>(false)
   const isInIframe = ref<boolean>(false)
   const quickEditEnabled = ref<boolean>(false)
+  const bridgeError = tinaBridge.error
 
   // Watch for external data changes when not actively editing
   watch(
@@ -241,7 +244,7 @@ export function useTina<T extends Record<string, unknown>>(
         }
       }
       catch (err) {
-        console.error('[nuxt-tina] postToAdmin failed', err)
+        tinaBridge.setError(err)
       }
     }
 
@@ -279,7 +282,7 @@ export function useTina<T extends Record<string, unknown>>(
         }
       }
       catch (err) {
-        console.error('[nuxt-tina] sendOpenHandshake failed', err)
+        tinaBridge.setError(err)
       }
     }
 
@@ -333,6 +336,12 @@ export function useTina<T extends Record<string, unknown>>(
 
     // Message listener for Tina Admin parent events
     const messageHandler = (event: MessageEvent) => {
+      // Tina Admin and this page are always the same origin (both served by
+      // this app) — reject anything else before it touches reactive state.
+      if (event.origin !== window.location.origin) {
+        return
+      }
+
       if (!event.data || typeof event.data !== 'object') {
         return
       }
@@ -410,6 +419,7 @@ export function useTina<T extends Record<string, unknown>>(
     isEditing,
     isInIframe,
     quickEditEnabled,
+    bridgeError,
     refresh: async () => {
       await refreshNuxtData()
     },

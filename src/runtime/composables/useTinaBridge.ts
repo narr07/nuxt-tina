@@ -5,6 +5,8 @@ export interface UseTinaBridgeReturn {
   isInIframe: Ref<boolean>
   sendToAdmin: (type: string, payload?: unknown) => void
   onAdminMessage: <T = unknown>(type: string, callback: (payload: T) => void) => () => void
+  /** The last error caught while talking to Tina Admin, or `null`. Shared with `useTina()`. */
+  bridgeError: Ref<Error | null>
 }
 
 /**
@@ -46,5 +48,6 @@ export function useTinaBridge(): UseTinaBridgeReturn {
     isInIframe,
     sendToAdmin,
     onAdminMessage,
+    bridgeError: tinaBridge.error,
   }
 }
