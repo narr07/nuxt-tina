@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme  {
+  --font-sans: 'Tiktok Sans', sans-serif;
+  --font-serif: 'Barlow', serif;
+  --font-mono: 'Sometype Mono', monospace;
+
+   --color-orange-50: #FACDBF,
+  --color-orange-100: #F8BEAC,
+  --color-orange-200: #F5A186,
+  --color-orange-300: #F28360,
+  --color-orange-400: #EF663B,
+  --color-orange-500: #EC4815,
+  --color-orange-600: #BA380F,
+  --color-orange-700: #86280B,
+  --color-orange-800: #521907,
+  --color-orange-900: #1E0902,
+  --color-orange-950: #040100
+}
+
+/* until v5 ships --ui-font-heading */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+
+:root {
+  --ui-radius: 0.625rem;
+}
+
+:root, .light {
+  --ui-bg: var(--ui-color-neutral-50);
+  --ui-bg-muted: var(--ui-color-neutral-100);
+  --ui-text-inverted: var(--ui-color-neutral-50);
+  --ui-primary: var(--ui-color-primary-600);
+}
+
+.dark {
+  --ui-text-highlighted: var(--ui-color-neutral-50);
+  --ui-bg-inverted: var(--ui-color-neutral-50);
+  --ui-border-inverted: var(--ui-color-neutral-50);
+  --ui-bg: var(--ui-color-neutral-900);
+  --ui-bg-muted: var(--ui-color-neutral-800);
+  --ui-text-inverted: var(--ui-color-neutral-900);
+  --ui-primary: var(--ui-color-primary-400);
+}
